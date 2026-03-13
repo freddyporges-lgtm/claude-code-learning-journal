@@ -53,6 +53,37 @@
 
 ---
 
+## OpenClaw
+
+### What it is
+- A local AI agent gateway — runs on your machine and connects chat channels (Telegram, WhatsApp, Discord, etc.) to AI models
+- Config at `~/.openclaw/openclaw.json` — Zod-validated, hot-reloads while gateway is running
+- Gateway runs on WebSocket at port 18789 by default; managed with `openclaw gateway run/stop/install`
+
+### Provider / model setup
+- OpenRouter is a supported provider — models referenced as `openrouter/<author>/<model>`
+- `openrouter/openrouter/free` is a meta-model that auto-routes to the best available free model (zero cost, rate-limited)
+- API credentials go in `~/.openclaw/agents/<agent-id>/auth-profiles.json` with `{ "type": "api_key", "key": "..." }` — **not** in `openclaw.json` itself
+
+### Agents
+- Multiple agents can be defined in `agents.list` — each has its own workspace, model, and agent state directory
+- Routing: `bindings` array maps channel traffic to agents e.g. `{ "agentId": "family", "match": { "channel": "telegram" } }`
+- `openclaw agents add <name> --model <id> --workspace <dir> --non-interactive` creates an agent and its directories
+
+### Telegram channel
+- Config at `channels.telegram.botToken` — bot created via @BotFather
+- `dmPolicy: "pairing"` — unknown DM senders get a one-time code; they send it back; owner approves with `openclaw pairing approve <CODE>`
+- `groupPolicy: "open"` — any group can add the bot (convenient for testing, risky for production)
+- Pairing requests live in gateway memory — killed gateway = lost pending request; DM bot again to regenerate
+
+### Key CLI commands
+- `openclaw config set <dot.path> <value>` — non-interactive config edits
+- `openclaw config validate` — confirms schema is clean
+- `openclaw pairing list` — shows pending requests with exact codes
+- `openclaw status` / `openclaw channels status` — health check
+
+---
+
 ## Agents & Automation
 
 ### Agent types (subagent_type parameter)
