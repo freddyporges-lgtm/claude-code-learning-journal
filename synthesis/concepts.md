@@ -45,6 +45,15 @@
 
 ---
 
+## MCP Gateways / Federated Proxies
+
+### `paypal-mcp-hub-zone1`
+- Single MCP endpoint that federates 106+ tools across 5 servers: Slack, Office 365, BigQuery, DFS behavioral, payments platform insights
+- Requires OAuth auth per provider — use `aiproxy_auth_manager` (no params) to check all statuses at once
+- Configured in `~/.claude.json`; may require VPN / corporate network access
+
+---
+
 ## Superpowers Plugin
 - Installed at `~/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.0/`
 - Adds structured skills for software development workflows

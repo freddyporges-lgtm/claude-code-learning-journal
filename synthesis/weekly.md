@@ -4,6 +4,15 @@
 
 ---
 
+## Week of March 17, 2026
+
+- Invoked the `journal` skill via natural-language Skill tool call — skill triggering is flexible, not just slash commands
+- MCP setup shifted to `paypal-mcp-hub-zone1`: a federated proxy providing Slack, Office 365, BigQuery, and more through a single endpoint
+- `aiproxy_auth_manager` tool checks OAuth status for all providers in one call
+- Corrected 3/10 assumption: `journal` skill IS triggerable via Skill tool
+
+---
+
 ## Week of March 10, 2026
 
 **Focus:** Getting oriented with Claude Code, MCP integrations, and building the Jeeves workflow.
