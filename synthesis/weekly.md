@@ -4,6 +4,16 @@
 
 ---
 
+## Week of March 23, 2026
+
+- `createConfluencePage` needs numeric space ID (Long) — not the key string; two-step lookup: page → space → numeric ID
+- For pervasive term removal across a doc, full `Write` rewrite beats chaining many `Edit` calls
+- External partner docs require terminology scrubbing (BXO, PPEI, internal program names → generic equivalents)
+- `parentId` in `createConfluencePage` nests the page correctly in the Confluence tree with no extra steps
+- Context window compression auto-summarizes long sessions — key decisions/paths should be surfaced so the next session can pick them up
+
+---
+
 ## Week of March 17, 2026
 
 - Invoked the `journal` skill via natural-language Skill tool call — skill triggering is flexible, not just slash commands

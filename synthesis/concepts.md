@@ -45,6 +45,16 @@
 
 ---
 
+## Confluence via MCP
+
+### `mcp__atlassian__createConfluencePage`
+- `spaceId` must be a **numeric Long**, not the space key string — passing `"PPAds"` throws a type error
+- **Two-step space ID lookup:** call `getConfluencePage` on any known page to confirm the space key → call `getConfluenceSpaces` with that key → extract the numeric `id`
+- `parentId` correctly nests the page in the Confluence tree — no extra steps needed
+- `contentFormat: "markdown"` accepted — auto-converts to Confluence storage format
+
+---
+
 ## MCP Gateways / Federated Proxies
 
 ### `paypal-mcp-hub-zone1`
